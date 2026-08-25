@@ -1,0 +1,44 @@
+name: dbt scheduled run
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  run_dbt:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: book_dbt_bq
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install dbt-core dbt-bigquery
+
+      - name: Write service account key
+        run: echo '${{ secrets.GCP_SA_KEY }}' > /tmp/gcp-sa-key.json
+
+      - name: Write profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat <<EOF > ~/.dbt/profiles.yml
+          book_dbt_bq:
+            target: prod
+            outputs:
+              prod:
+                type: bigquery
+                method: service-account
+                project: books-project-506511
+                dataset: CURATED
+                threads: 4
+                location: EU
+                keyfile: /tmp/gcp-sa-key.json
+          EOF
+
+      - run: dbt run
+      - run: dbt test
