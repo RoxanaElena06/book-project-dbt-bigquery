@@ -1,0 +1,11 @@
+book_dbt_bq:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: service-account
+      project: books-project-506511
+      dataset: CURATED
+      threads: 4
+      location: EU
+      keyfile: /tmp/gcp-sa-key.json
