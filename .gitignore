@@ -1,0 +1,13 @@
+.venv/
+google-cloud-sdk/
+.idea/
+logs/
+GoogleCloudSDKInstaller.exe
+uninstaller.exe
+install_mode
+cloud_env.bat
+supercloud-16x16.ico
+*.csv
+book_dbt_bq/target/
+book_dbt_bq/logs/
+book_dbt_bq/dbt_packages/

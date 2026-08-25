@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    dataset: RAW
+    tables:
+      - name: books_raw
+      - name: ratings_raw
+      - name: book_tags_raw
+      - name: tags_raw
