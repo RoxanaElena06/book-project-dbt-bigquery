@@ -34,7 +34,7 @@ Automated dbt tests enforce:
 - Valid rating range (1–5)
 
 ## ⏰ Orchestration
-The pipeline runs automatically every day via **GitHub Actions** [`.github/workflows/dbt_run.yml`]([.github/workflows/dbt_run.yml](https://github.com/RoxanaElena06/book-project-dbt-bigquery/actions/workflows/dbt_run.yml)), executing `dbt run` and `dbt test` against BigQuery using a service account.
+The pipeline runs automatically every day via **GitHub Actions** ([`.github/workflows/dbt_run.yml`](.github/workflows/dbt_run.yml)), executing `dbt run` and `dbt test` against BigQuery using a service account.
 
 ## 📊 Dashboard
 Built in Power BI, across two pages:
